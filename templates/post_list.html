@@ -1,0 +1,40 @@
+{% extends 'base.html' %} 
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    Hi {{ user.username }}! <!--You are {{ user.age }} years old.-->
+    <p>Here are all the posts you have created.</p>
+    {% for post in object_list %}
+    <div class="card">
+        <div class="card-header">
+            <span class="font-weight-bold">{{ post.title }}</span> &middot;
+            <span class="text-muted">by {{ post.author }} |
+            {{ post.date }}</span>
+        </div>
+        <div class="card-body">
+            <p>{{ post.body }}</p>
+            <a href="{% url 'post_detail' post.pk %}">View</a> | 
+            <a href="{% url 'post_edit' post.pk %}">Edit</a> | 
+            <a href="{% url 'post_delete' post.pk %}">Delete</a>
+        </div>
+        <div class="card-footer text-center text-muted">
+        {% for comment in post.comments.all %}
+        <p>
+            <span class="font-weight-bold">
+                {{ comment.author }} &middot;
+            </span>
+            {{ comment }}
+        </p>
+        {% endfor %}
+        </div>
+    </div>
+    <br />
+    {% endfor %}
+    {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+    {% endblock content %}

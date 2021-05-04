@@ -1,0 +1,40 @@
+{% extends 'base.html' %} 
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<br/>
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Reichx!'s Blog</h1>
+    <p class="lead">A Personal Blog website built with Django.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'post_list' %}"
+        role="button">View All Articles</a>
+    </p>
+</div>
+
+<!--{% if user.is_authenticated %}
+    Hi {{ user.username }}! You are {{ user.age }} years old.
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% for post in object_list %}
+    <div class="card">
+        <div class="card-header">
+            <span class="font-weight-bold">{{ post.title }}</span> &middot;
+            <span class="text-muted">by {{ post.author }} |
+            {{ post.date }}</span>
+        </div>
+        <div class="card-body">
+            {{ post.body }}
+        </div>
+        <div class="card-footer text-center text-muted">
+        <a href="#">Edit</a> | <a href="#">Delete</a>
+        </div>
+    </div>
+    <br />
+    {% endfor %}
+    {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %} -->
+    {% endblock content %}
