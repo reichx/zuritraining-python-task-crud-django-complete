@@ -5,7 +5,7 @@
 {% block content %}
 {% if user.is_authenticated %}
     Hi {{ user.username }}! <!--You are {{ user.age }} years old.-->
-    <p>Here are all the posts you have created.</p>
+    <p>Here are all the posts which have been created till date.</p>
     {% for post in object_list %}
     <div class="card">
         <div class="card-header">
